@@ -2,19 +2,18 @@ import React from 'react';
 import './App.css';
 import {CardList} from './Components/Card-list/card-list.component'
 
-class App extends React.Component () {
+class App extends React.Component {
   constructor(){
     super()
 
     this.state = {
       monsters:[] 
-
-    }
+ }
 
 
   }
 
-  ComponentDidMount() {
+  componentDidMount() {
     fetch('https://jsonplaceholder.typicode.com/users')
     .then(response => response.json() )
     .then(users => this.setState({monsters:users}))
