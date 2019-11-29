@@ -22,17 +22,18 @@ class App extends React.Component {
   
   
   render(){
-    const { monsters , searchField } = this.state;
+    const { monsters , search } = this.state;
 // const monsters = this.state.monsters;
 // const searchField = this.state.searchField;
-    const filteredMonsters = monsters.filter(monster => monster.name.toLowerCase().includes(searchField.toLowerCase())
+console.log(this.state);
+    const filteredMonsters = monsters.filter(monster => monster.name.toLowerCase().includes(search.toLowerCase())
     );
 
     return (
       <div className="App">
       <input type='search' 
              placeholder='search monsters' 
-             onChange={e =>  this.setState({searchField: e.target.value})
+             onChange={e =>  this.setState({search: e.target.value})
     } />
       <CardList monsters={filteredMonsters}>
       </CardList>
