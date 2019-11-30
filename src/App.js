@@ -1,6 +1,11 @@
 import React from 'react';
 import './App.css';
 import {CardList} from './Components/Card-list/card-list.component'
+import { SearchBox } from './Components/Searchbox/search-box';
+
+// error with searchfield
+//check the state and the updates of the state when you have undefined errors
+//when something is updated there should be counterpart in the state
 
 class App extends React.Component {
   constructor(){
@@ -8,7 +13,7 @@ class App extends React.Component {
 
     this.state = {
       monsters:[],
-      search: '' 
+      searchField: '' 
  }
 
 
@@ -22,19 +27,19 @@ class App extends React.Component {
   
   
   render(){
-    const { monsters , search } = this.state;
+    const { monsters , searchField } = this.state;
 // const monsters = this.state.monsters;
 // const searchField = this.state.searchField;
 console.log(this.state);
-    const filteredMonsters = monsters.filter(monster => monster.name.toLowerCase().includes(search.toLowerCase())
+    const filteredMonsters = monsters.filter(monster => monster.name.toLowerCase().includes(searchField.toLowerCase())
     );
 
     return (
       <div className="App">
-      <input type='search' 
-             placeholder='search monsters' 
-             onChange={e =>  this.setState({search: e.target.value})
-    } />
+      <SearchBox
+        placeholder='search monsters'
+        handleChange={e => this.setState({searchField: e.target.value})}
+      />
       <CardList monsters={filteredMonsters}>
       </CardList>
       </div>
